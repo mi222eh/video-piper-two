@@ -12,6 +12,9 @@ import { open } from "@tauri-apps/api/dialog";
 import { Form, Formik } from "formik";
 import * as yup from "yup";
 import { useVideoHandler } from "../GlobalContexts/VideoHandler";
+import { useFFMPEGStatus } from "../Services/ffmpeg.services";
+import { useYoutubeDlStatus } from "../Services/youtubedl.services";
+import NotAvailable from "./NotAvailable";
 
 const validationSchema = yup.object({
     audioOnly: yup.boolean().default(false),
@@ -34,8 +37,12 @@ const validationSchema = yup.object({
     folder: yup.string().default("").required(),
 });
 
-export default function Search() {
+export default function DownloadVideo() {
+    const { isAvailable: isYtdlAvailable } = useYoutubeDlStatus();
+    const { isAvailable: isffmpegAvailable } = useFFMPEGStatus();
+
     const { addVideo } = useVideoHandler();
+
     async function chooseFolder() {
         const folder = await open({
             directory: true,
@@ -45,6 +52,10 @@ export default function Search() {
         if (!folder || Array.isArray(folder)) return;
         return folder;
     }
+
+    if (!isYtdlAvailable || !isffmpegAvailable)
+        return <NotAvailable></NotAvailable>;
+
     return (
         <Formik
             initialValues={validationSchema.getDefault()}

@@ -1,7 +1,37 @@
 import { Command, Child } from "@tauri-apps/api/shell";
+import { proxy, useSnapshot } from "valtio";
 import { IVideoInfo } from "../VideoInfo";
 import { spawnExecCommand } from "./command.services";
 import { getResourceDir } from "./folders.services";
+
+const youtubeDlStatus = proxy({
+    /**If youtube-dl is foud or not by the app */
+    isAvailable: false,
+    /**youtube-dl version */
+    version: "",
+});
+
+export const useYoutubeDlStatus = () => {
+    return useSnapshot(youtubeDlStatus);
+};
+
+export const isYoutubeDlAvailable = async () => {
+    const { dataPromise } = await executeYoutubeDlChildProcess(["--version"]);
+
+    try {
+        const version = await dataPromise;
+        youtubeDlStatus.version = version;
+        youtubeDlStatus.isAvailable = true;
+        console.log("youtube-dl is available");
+
+        return true;
+    } catch {
+        youtubeDlStatus.isAvailable = false;
+        youtubeDlStatus.version = "";
+        console.log("youtube-dl is not available");
+        return false;
+    }
+};
 
 export const executeYoutubeDlCommand = async (args: string[]) => {
     const command = spawnExecCommand("youtube-dl", args, {

@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { HashRouter } from "react-router-dom";
 import { FolderContextProvider } from "./GlobalContexts/FoldersContext";
+import { StatusChecker } from "./GlobalContexts/StatusChecker";
 import VideoHandler from "./GlobalContexts/VideoHandler";
 import { YoutubeDlContextProvider } from "./GlobalContexts/YoutubedlContext";
 
@@ -9,7 +10,9 @@ export default function GlobalContexts(props: { children: ReactNode }) {
         <HashRouter>
             <FolderContextProvider>
                 <YoutubeDlContextProvider>
-                    <VideoHandler>{props.children}</VideoHandler>
+                    <StatusChecker>
+                        <VideoHandler>{props.children}</VideoHandler>
+                    </StatusChecker>
                 </YoutubeDlContextProvider>
             </FolderContextProvider>
         </HashRouter>

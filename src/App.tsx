@@ -50,6 +50,13 @@ function App() {
                                     </Typography>
                                 </MenuItem>
                             </NavLink>
+                            <NavLink to="/docs">
+                                <MenuItem>
+                                    <Typography textAlign="center">
+                                        Docs
+                                    </Typography>
+                                </MenuItem>
+                            </NavLink>
                         </Stack>
                     </MenuList>
                 </Toolbar>

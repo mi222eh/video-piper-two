@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import DownloadVideo from "../Components/DownloadVideo";
+import Docs from "./Docs";
 import FFMPEGSettings from "./FFMPEGSettings";
 import YoutubeDLSettings from "./YoutubeDLSettings";
 
@@ -15,6 +16,7 @@ export default function Index() {
                 path="youtube-dl"
                 element={<YoutubeDLSettings></YoutubeDLSettings>}
             ></Route>
+            <Route path="docs" element={<Docs></Docs>}></Route>
         </Routes>
     );
 }

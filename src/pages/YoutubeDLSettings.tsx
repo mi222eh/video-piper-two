@@ -9,12 +9,12 @@ export default function YoutubeDLSettings() {
             <Box>
                 {!isAvailable && (
                     <Alert severity="error">
-                        youtube-dl is not available, please install it and/or
+                        yt-dlp is not available, please install it and/or
                         reference the .exe file
                     </Alert>
                 )}
                 {isAvailable && (
-                    <Alert severity="success">youtube-dl is avilable</Alert>
+                    <Alert severity="success">yt-dlp is avilable</Alert>
                 )}
             </Box>
             <Box margin="0 1rem">

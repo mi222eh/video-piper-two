@@ -1,6 +1,6 @@
 import { Command, Child } from "@tauri-apps/api/shell";
 import { proxy, useSnapshot } from "valtio";
-import { IVideoInfo } from "../VideoInfo";
+import { Format, IVideoInfo } from "../VideoInfo";
 import { spawnExecCommand } from "./command.services";
 import { getResourceDir } from "./folders.services";
 
@@ -60,6 +60,25 @@ export const getInfoWithYoutubeDL = async (args: { url: string }) => {
         child,
         dataPromise: dataPromise.then(
             (json) => JSON.parse(json as any) as IVideoInfo
+        ),
+    };
+};
+
+export const getFormatInfoWithYoutubeDL = async (args: {
+    url: string;
+    format: string;
+}) => {
+    const { url, format } = args;
+    const { child, dataPromise } = await executeYoutubeDlChildProcess([
+        "-J",
+        "-f",
+        format,
+        url,
+    ]);
+    return {
+        child,
+        dataPromise: dataPromise.then(
+            (json) => JSON.parse(json as any) as Format
         ),
     };
 };

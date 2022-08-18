@@ -27,7 +27,7 @@
         "scope": [
           {
             "name": "youtube-dl",
-            "cmd": "youtube-dl",
+            "cmd": "yt-dlp",
             "args": true
           },
           {

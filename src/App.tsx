@@ -36,6 +36,13 @@ function App() {
                                     </Typography>
                                 </MenuItem>
                             </NavLink>
+                            {/* <NavLink to="/stream">
+                                <MenuItem>
+                                    <Typography textAlign="center">
+                                        Stream
+                                    </Typography>
+                                </MenuItem>
+                            </NavLink> */}
                             <NavLink to={"/ffmpeg"}>
                                 <MenuItem>
                                     <Typography textAlign="center">
@@ -46,7 +53,7 @@ function App() {
                             <NavLink to={"/youtube-dl"}>
                                 <MenuItem>
                                     <Typography textAlign="center">
-                                        Youtube DL
+                                        YT-DLP
                                     </Typography>
                                 </MenuItem>
                             </NavLink>

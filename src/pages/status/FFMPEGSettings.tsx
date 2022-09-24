@@ -1,20 +1,22 @@
-import { Alert, Box, Stack, Typography } from "@mui/material";
-import { useYoutubeDlStatus } from "../Services/youtubedl.services";
+import { CheckBox } from "@mui/icons-material";
+import { Alert, Checkbox, FormLabel, Stack, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import { useFFMPEGStatus } from "../../Services/ffmpeg.services";
 
-export default function YoutubeDLSettings() {
-    const { isAvailable, version } = useYoutubeDlStatus();
+export default function FFMPEGSettings() {
+    const { isAvailable, version } = useFFMPEGStatus();
 
     return (
         <Stack>
             <Box>
                 {!isAvailable && (
                     <Alert severity="error">
-                        yt-dlp is not available, please install it and/or
+                        FFMPEG is not available, please install it and/or
                         reference the .exe file
                     </Alert>
                 )}
                 {isAvailable && (
-                    <Alert severity="success">yt-dlp is avilable</Alert>
+                    <Alert severity="success">FFMPEG is avilable</Alert>
                 )}
             </Box>
             <Box margin="0 1rem">

@@ -57,8 +57,6 @@ export function FolderContextProvider(props: { children: ReactNode }) {
         })();
     }, []);
 
-    if (loading) return <>Loading</>;
-
     return (
         <FolderContext.Provider
             value={{

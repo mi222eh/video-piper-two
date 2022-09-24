@@ -13,37 +13,3 @@ export default function MainMenu() {
         </Stack>
     );
 }
-
-// export default function MainMenu() {
-//     return (
-//         <Stack direction="row">
-//             <NavLink to={"/"} end>
-//                 <MenuItem>
-//                     <Typography textAlign="center">Download</Typography>
-//                 </MenuItem>
-//             </NavLink>
-//             {/* <NavLink to="/stream">
-//                                 <MenuItem>
-//                                     <Typography textAlign="center">
-//                                         Stream
-//                                     </Typography>
-//                                 </MenuItem>
-//                             </NavLink> */}
-//             <NavLink to={"/ffmpeg"}>
-//                 <MenuItem>
-//                     <Typography textAlign="center">FFMPEG</Typography>
-//                 </MenuItem>
-//             </NavLink>
-//             <NavLink to={"/youtube-dl"}>
-//                 <MenuItem>
-//                     <Typography textAlign="center">YT-DLP</Typography>
-//                 </MenuItem>
-//             </NavLink>
-//             <NavLink to="/docs">
-//                 <MenuItem>
-//                     <Typography textAlign="center">Docs</Typography>
-//                 </MenuItem>
-//             </NavLink>
-//         </Stack>
-//     );
-// }
